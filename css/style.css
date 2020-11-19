@@ -1,23 +1,68 @@
 body {
     margin: auto;
     text-align: center;
+    background-image: url(../background.gif);
 }
 
-.smiley { 
-      margin-top: 20px;
-    }
+h1 {
+    font-size: 30px;
+}
 
-table{
+.information {
+    margin: auto;
+    margin-top: 30px;
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+
+.smiley {
+    font-size: 25px;
+    padding-left: 80px;
+    padding-right: 90px;
+    /* background-color: black; */
+}
+
+.lives {
+    font-size: 15px;
+}
+
+.board {
     background-color: aqua;
     margin: auto;
     margin-top: 10px;
     text-align: center;
 }
-  
+
 .cell {
     border: 0.2px solid;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     text-align: center;
     font-size: 1.5em;
+}
+
+.beginner {
+    background-color: cornflowerblue;
+    font-size: 20px;
+    /* padding-left: 50px;
+    padding-right: 50px; */
+    border-radius: 10px;
+}
+
+.medium {
+    background-color: cornflowerblue;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    /* padding-left: 50px;
+    padding-right: 50px; */
+}
+
+.expert {
+    background-color: cornflowerblue;
+    font-size: 20px;
+    border-radius: 10px;
+    /* padding-left: 50px;
+    padding-right: 50px; */
 }
