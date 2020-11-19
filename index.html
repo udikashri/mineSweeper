@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>MineSweeper-UdiKashri</title>
+</head>
+
+<body onload="inIt()">
+    <h1>MineSweeper</h1>
+    <div class="difficulty">
+        <button onclick="difficulty(4)">Beginner</button>
+        <button onclick="difficulty(8)">Medium</button>
+        <button onclick="difficulty(12)">Expert</button>
+        <div>
+            <div class="lives"></div>
+            <div onclick="resetGame()" class="smiley">😀</div>
+        </div>
+        <div class="board-container"></div>
+        <script src="/js/utils.js"></script>
+        <script src="/js/main.js"></script>
+</body>
+
+</html>
