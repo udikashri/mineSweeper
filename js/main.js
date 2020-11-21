@@ -166,6 +166,21 @@ function checkNeighbors(location, board, elCell) {
     return neighborsMinesCount
 }
 
+function doubleClicked(elDoubleClicked) {
+    var location = getCellLocation(elDoubleClicked.className);
+    if (!gGame.isOn) { return }
+    console.log(elDoubleClicked);
+
+    if (gBoard[location.i][location.j].isMarked) {
+        gBoard[location.i][location.j].isMarked = false
+        renderCell(location, EMTY)
+        return
+    }
+    gBoard[location.i][location.j].isMarked = true
+    gGame.markedCount++
+        renderCell(location, FLAG, 0)
+}
+
 function cellClicked(elCell) {
     var location = getCellLocation(elCell.className);
     if (!gGame.isOn) { return }
@@ -324,6 +339,14 @@ function resetGame() {
     inIt()
 }
 
+function hint() {
+    if (gLevel.HINTS > 0) {
+        gLevel.HINTS--
+            gGame.isHint = true
+        addOrDelete(gLevel.HINTS, 'hints', HINTS)
+    }
+}
+
 function rightButton(event) {
     if (!gGame.isOn) { return }
     var location = getCellLocation(event.target.className);
@@ -339,27 +362,6 @@ function rightButton(event) {
     }
 }
 
-function hint() {
-    if (gLevel.HINTS > 0) {
-        gLevel.HINTS--
-            gGame.isHint = true
-        addOrDelete(gLevel.HINTS, 'hints', HINTS)
-    }
-}
-
-function doubleClicked(elDoubleClicked) {
-    if (!gGame.isOn) { return }
-    console.log(elDoubleClicked);
-
-    if (gBoard[location.i][location.j].isMarked) {
-        gBoard[location.i][location.j].isMarked = false
-        renderCell(location, EMTY)
-        return
-    }
-    gBoard[location.i][location.j].isMarked = true
-    gGame.markedCount++
-        renderCell(location, FLAG, 0)
-}
 
 function checkSize() {
     if (gLevel.SIZE === 4) { gLevel.HINTS = 1, gLevel.LIVES = 1, gLevel.SAFES = 1, gLevel.MINES = 2 }
