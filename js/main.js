@@ -176,10 +176,8 @@ function cellClicked(elCell) {
             renderCell(location, MINE, 'lightGreen')
             return
         }
-
-
+        setMinesNegsCount(gBoard)
     }
-    setMinesNegsCount(gBoard)
     if (gCreateMines) {
         console.log('hello');
         for (var i = 0; i < gLevel.SIZE; i++) {
@@ -303,6 +301,12 @@ function difficulty(size) {
     renderBoard(gBoard, '.board-container')
     resetGame()
     resetClock()
+    var elManuallyClicked = document.querySelector('.manuallyCreate')
+    elManuallyClicked.style.backgroundColor = 'rgba(0, 0, 255, 0.658)'
+    var elSafeClicked = document.querySelector('.safeClicked')
+    elSafeClicked.style.backgroundColor = 'rgba(0, 0, 255, 0.658)'
+    gCreateMines = false
+    gManuallyCount = 0
 }
 
 function resetGame() {
@@ -313,6 +317,7 @@ function resetGame() {
     gGame.firstClick = true
     var elSmiley = document.querySelector('.smiley')
     elSmiley.innerText = '😀'
+
     checkSize()
     resetClock()
     inIt()
@@ -403,7 +408,7 @@ function Clock() {
     }
 }
 
-function safeClicked() {
+function safeClicked(elSafeClicked) {
     if (gLevel.SAFES > 0) {
         gLevel.SAFES--
             for (var i = 0; i < gLevel.SIZE; i++) {
@@ -412,14 +417,15 @@ function safeClicked() {
                         if (gBoard[i][j].minesAroundCount === 0) {
                             renderCell(gBoard[i][j].location, EMTY, 'lightGray')
                             gBoard[i][j].isShown = true
-                            shownCount++
+                            gGame.shownCount++
                         } else {
                             renderCell(gBoard[i][j].location, gBoard[i][j].minesAroundCount, 'lightGray')
                             gBoard[i][j].isShown = true
-                            shownCount++
+                            gGame.shownCount++
                         }
-                        return
                     }
+                    elSafeClicked.style.backgroundColor = 'gray'
+                    return
                 }
             }
     }
@@ -440,8 +446,10 @@ function resetClock() {
     elMiliSec.innerText = gMiliSeconds;
 }
 
-function manuallyCreate() {
+function manuallyCreate(elManuallyCreate) {
     gCreateMines = true
+    elManuallyCreate.style.backgroundColor = 'gray'
+    resetGame()
     for (var i = 0; i < gLevel.SIZE; i++) {
         for (var j = 0; j < gLevel.SIZE; j++) {
             if (gBoard[i][j].isMine) {
@@ -449,5 +457,4 @@ function manuallyCreate() {
             }
         }
     }
-    resetGame()
 }

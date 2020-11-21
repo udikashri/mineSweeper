@@ -21,9 +21,9 @@
             <th onclick="resetGame()" class="smiley">😀</th>
             <th class="lives"></th>
         </table>
-        <div onclick="safeClicked()" class="safeClick">Safe click</div>
+        <div onclick="safeClicked(this)" class="safeClicked">Safe click</div>
         </br>
-        <div onclick="manuallyCreate()" class="manuallyCreate">Manually create</div>
+        <div onclick="manuallyCreate(this)" class="manuallyCreate">Manually create</div>
         <div class="clockContainer">
             <div class="clock"> <span class="min">00</span> : <span class="sec">00</span> : <span class="miliSec">000</span></div>
             <div class="scores">
