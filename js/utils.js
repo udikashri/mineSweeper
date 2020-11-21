@@ -5,7 +5,7 @@ function renderBoard(mat, selector) {
         for (var j = 0; j < mat[0].length; j++) {
             var cell = mat[i][j];
             var className = 'cell cell' + i + '-' + j;
-            strHTML += '<td onclick="cellClicked(this)" class="' + className + '" onmousedown="rightButton(event)" >  </td>'
+            strHTML += '<td onclick="cellClicked(this)" class="' + className + '" onmousedown="rightButton(event)" ondblclick="doubleClicked(this)" >  </td>'
         }
         strHTML += '</tr>'
     }
@@ -16,12 +16,16 @@ function renderBoard(mat, selector) {
 
 function renderCell(location, value, cell) {
     var elCell = document.querySelector(`.cell${location.i}-${location.j}`);
-    if (!cell || cell === 0) {
+    if (!cell) {
         elCell.innerHTML = value;
-        return
+    } else if (cell === 'gray') {
+        elCell.innerHTML = value;
+        elCell.style.backgroundColor = 'gray'
+            // return
+    } else if (cell === 'lightGray') {
+        elCell.style.backgroundColor = 'rgba(104, 99, 126, 0.616)';
+        elCell.innerHTML = value;
     }
-    elCell.style.backgroundColor = 'gray';
-    elCell.innerHTML = value;
 }
 
 function getRandomIntInclusive(min, max) {

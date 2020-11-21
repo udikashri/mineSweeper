@@ -4,36 +4,61 @@ body {
     background-image: url(../background.gif);
 }
 
+.container {
+    border-radius: 20px;
+    margin-top: 30px;
+    background-color: rgba(104, 99, 126, 0.616);
+    display: inline-block
+}
+
 h1 {
-    font-size: 30px;
+    font-size: 40px;
+    color: rgb(227, 231, 14);
 }
 
 .information {
     margin: auto;
     margin-top: 30px;
     font-size: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+}
+
+.clockContainer {
+    background-color: rgba(255, 255, 255, 0.247);
+    font-size: 20px;
+    margin-bottom: 10px;
+    /* color: ; */
 }
 
 .smiley {
     font-size: 25px;
     padding-left: 80px;
     padding-right: 90px;
-    /* background-color: black; */
 }
 
 .lives {
     font-size: 15px;
 }
 
+.safeClick {
+    font-size: 20px;
+    background-color: rgba(0, 0, 255, 0.658);
+    border-radius: 10px;
+    padding: 2px;
+    margin-bottom: 5px;
+    display: inline-block
+}
+
 .board {
-    background-color: aqua;
+    border-radius: 30%;
+    background-color: rgba(4, 199, 248, 0.404);
     margin: auto;
-    margin-top: 10px;
+    padding: 50px;
     text-align: center;
 }
 
 .cell {
+    background-color: gray;
     border: 0.2px solid;
     width: 30px;
     height: 30px;
@@ -44,9 +69,8 @@ h1 {
 .beginner {
     background-color: cornflowerblue;
     font-size: 20px;
-    /* padding-left: 50px;
-    padding-right: 50px; */
     border-radius: 10px;
+    margin-left: 20px;
 }
 
 .medium {
@@ -55,14 +79,11 @@ h1 {
     margin-left: 20px;
     margin-right: 20px;
     border-radius: 10px;
-    /* padding-left: 50px;
-    padding-right: 50px; */
 }
 
 .expert {
     background-color: cornflowerblue;
     font-size: 20px;
     border-radius: 10px;
-    /* padding-left: 50px;
-    padding-right: 50px; */
+    margin-right: 20px;
 }
