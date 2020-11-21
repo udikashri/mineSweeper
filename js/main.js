@@ -183,7 +183,6 @@ function cellClicked(elCell) {
         for (var i = 0; i < gLevel.SIZE; i++) {
             for (var j = 0; j < gLevel.SIZE; j++) {
                 if (gBoard[i][j].isMine) {
-
                     renderCell(gBoard[i][j].location, EMTY, 'gray')
                 }
             }
@@ -219,8 +218,10 @@ function cellClicked(elCell) {
     if (!gBoard[location.i][location.j].isMine) {
         console.log((Math.pow(gLevel.SIZE, 2) - gGame.shownCount - gGame.markedCount));
         console.log(Math.pow(gLevel.SIZE, 2) - gGame.shownCount - gGame.minesCount);
+        console.log(Math.pow(gLevel.SIZE, 2) - gGame.shownCount - gManuallyCount)
         if ((Math.pow(gLevel.SIZE, 2) - gGame.shownCount - gGame.markedCount) === 0 ||
-            (Math.pow(gLevel.SIZE, 2) - gGame.shownCount - gGame.minesCount) <= 0) {
+            (Math.pow(gLevel.SIZE, 2) - gGame.shownCount - gGame.minesCount) <= 0 ||
+            (Math.pow(gLevel.SIZE, 2) - gGame.shownCount - gManuallyCount) <= 0) {
             gEndTime = Date.now()
             gGameTime = gEndTime - gStartTime;
             if (!localStorage.getItem('bestScore') || gGameTime < localStorage.getItem('bestTime')) {
