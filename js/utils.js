@@ -21,9 +21,11 @@ function renderCell(location, value, cell) {
     } else if (cell === 'gray') {
         elCell.innerHTML = value;
         elCell.style.backgroundColor = 'gray'
-            // return
     } else if (cell === 'lightGray') {
         elCell.style.backgroundColor = 'rgba(104, 99, 126, 0.616)';
+        elCell.innerHTML = value;
+    } else if (cell === 'lightGreen') {
+        elCell.style.backgroundColor = 'rgba(12, 219, 12, 0.664)';
         elCell.innerHTML = value;
     }
 }

@@ -105,12 +105,12 @@ function showNeighbors(location, board) {
         for (var j = (location.j - 1); j < (location.j + 2) && j < board[0].length; j++) {
             if (j > board[0].length - 1 || j < 0 ||
                 i > board.length - 1 || i < 0) { continue }
+            if (board[i][j].isShown) { continue }
             if (!board[i][j].isShown) {
-                board[i][j].isShown = true
-                renderCell(board[i][j].location, board[i][j].minesAroundCount, 'lightGray')
-                if (board[i][j].minesAroundCount === 0) { renderCell(board[i][j].location, EMTY, 'lightGray') }
+                renderCell(board[i][j].location, board[i][j].minesAroundCount, 'lightGreen')
+                if (board[i][j].minesAroundCount === 0) { renderCell(board[i][j].location, EMTY, 'lightGreen') }
                 if (board[i][j].isMine) {
-                    renderCell(board[i][j].location, MINE, 'lightGray')
+                    renderCell(board[i][j].location, MINE, 'lightGreen')
                 }
                 setTimeout(function() {
                     for (var i = (location.i - 1); i < (location.i + 2) && i < board.length; i++) {
@@ -118,9 +118,7 @@ function showNeighbors(location, board) {
                         for (var j = (location.j - 1); j < (location.j + 2) && j < board[0].length; j++) {
                             if (j > board[0].length - 1 || j < 0 ||
                                 i > board.length - 1 || i < 0) { continue }
-
-                            // if (board[i][j].minesAroundCount === 0) { renderCell(board[i][j].location, EMTY, 0) }
-                            board[i][j].isShown = false
+                            if (board[i][j].isShown) { continue }
                             renderCell(board[i][j].location, EMTY, 'gray')
                             if (board[i][j].isMine) {
                                 renderCell(board[i][j].location, EMTY, 'gray')
