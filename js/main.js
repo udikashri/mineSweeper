@@ -16,6 +16,8 @@ const EMTY = ' '
 const LIVE = '❤️'
 const HINTS = '💡'
     // game global vars
+var gCreateMines = false
+var gManuallyCount = 0
 var gBoard = []
 
 var gLevel = {
@@ -60,10 +62,12 @@ function buildBoard(size) {
             }
         }
     }
-    addMINE(gLevel.MINES, board)
+    if (!gCreateMines) {
+        addMINE(gLevel.MINES, board)
+        setMinesNegsCount(board)
+    }
     addOrDelete(gLevel.LIVES, 'lives', LIVE)
     addOrDelete(gLevel.HINTS, 'hints', HINTS)
-    setMinesNegsCount(board)
     return board;
 }
 
@@ -163,9 +167,31 @@ function checkNeighbors(location, board, elCell) {
 }
 
 function cellClicked(elCell) {
-    debugger
     var location = getCellLocation(elCell.className);
     if (!gGame.isOn) { return }
+    if (gCreateMines) {
+        if (gManuallyCount !== gLevel.MINES) {
+            gManuallyCount++
+            gBoard[location.i][location.j].isMine = true
+            renderCell(location, MINE, 'lightGreen')
+            return
+        }
+
+
+    }
+    setMinesNegsCount(gBoard)
+    if (gCreateMines) {
+        console.log('hello');
+        for (var i = 0; i < gLevel.SIZE; i++) {
+            for (var j = 0; j < gLevel.SIZE; j++) {
+                if (gBoard[i][j].isMine) {
+
+                    renderCell(gBoard[i][j].location, EMTY, 'gray')
+                }
+            }
+        }
+        gCreateMines = false
+    }
     if (gGame.firstClick) {
         Clock()
         if (gBoard[location.i][location.j].isMine) {
@@ -257,8 +283,8 @@ function cellClicked(elCell) {
         }
 
     }
-
 }
+
 
 function getCellLocation(className) {
     var cellLocation = className.substring(9, 14)
@@ -412,4 +438,16 @@ function resetClock() {
     elSec.innerText = gSeconds;
     var elMiliSec = document.querySelector('.miliSec')
     elMiliSec.innerText = gMiliSeconds;
+}
+
+function manuallyCreate() {
+    gCreateMines = true
+    for (var i = 0; i < gLevel.SIZE; i++) {
+        for (var j = 0; j < gLevel.SIZE; j++) {
+            if (gBoard[i][j].isMine) {
+                gBoard[i][j].isMine = false
+            }
+        }
+    }
+    resetGame()
 }

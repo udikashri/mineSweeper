@@ -16,19 +16,14 @@
             <button onclick="difficulty(8)" class="medium">Medium</button>
             <button onclick="difficulty(12)" class="expert">Expert</button>
         </table>
-        <!-- <div class="information"> -->
         <table class="information">
             <th class="hints" onclick="hint(this)"></th>
             <th onclick="resetGame()" class="smiley">😀</th>
             <th class="lives"></th>
-            <!-- <div </div>
-                    <div ></div>
-                    <div ></div> -->
         </table>
         <div onclick="safeClicked()" class="safeClick">Safe click</div>
-        <!-- <div class="playAgainContiner">
-            <button class="playAgain" onclick="PlayAgainClicked()">Play Again!</button>
-        </div> -->
+        </br>
+        <div onclick="manuallyCreate()" class="manuallyCreate">Manually create</div>
         <div class="clockContainer">
             <div class="clock"> <span class="min">00</span> : <span class="sec">00</span> : <span class="miliSec">000</span></div>
             <div class="scores">
@@ -36,10 +31,7 @@
                 <div>Best Score is - <span class="bestScore"></span></div>
             </div>
         </div>
-
         <div class="board-container"></div>
-
-        <button onclick="letsGoBack(this)">Go back</button>
     </div>
     <script src="js/utils.js"></script>
     <script src="js/main.js"></script>
